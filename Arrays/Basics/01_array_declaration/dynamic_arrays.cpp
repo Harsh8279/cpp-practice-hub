@@ -1,4 +1,5 @@
 #include<iostream>
+#include<iomanip>
 using namespace std;
 
 class DynamicArray{
@@ -32,7 +33,18 @@ public:
             use modern C++ features like std::vector to manage memory automatically.
         */
 
+        // Modern C++ Smart Pointer Approach
+        std::cout << "\t2. Smart Pointer Dynamic Array:\n";
+        int size_of_sp = 8;
+        unique_ptr<int []> smartArray(new int[size_of_sp]);
         
+        for(int i = 0;i<size_of_sp;i++){
+            smartArray[i] = i*20;
+        }
+
+        for(int i = 0;i<size_of_sp;i++){
+            cout<<"\t\t"<<smartArray[i]<<endl;
+        }
 
 
 
