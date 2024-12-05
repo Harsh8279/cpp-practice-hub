@@ -1,5 +1,6 @@
 #include<iostream>
 #include<iomanip>
+#include<vector>
 using namespace std;
 
 class DynamicArray{
@@ -46,9 +47,17 @@ public:
             cout<<"\t\t"<<smartArray[i]<<endl;
         }
 
+        // Vector
+        std::cout << "\t3. Vector:\n";
+        vector<int> vec_array;
 
+        for(int i = 0; i<10; i++){
+            vec_array.push_back(i*12);
+        }
 
-        cout<<""<<endl;
+        for(auto &data: vec_array){
+            cout<<"\t\t"<<data<<endl;
+        }
 
     }
 
