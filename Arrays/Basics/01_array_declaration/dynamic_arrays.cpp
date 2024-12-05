@@ -59,6 +59,23 @@ public:
             cout<<"\t\t"<<data<<endl;
         }
 
+        // 2D array 
+        // Matrix 
+        std::cout << "\t4. Matrix:\n";
+        int multiDarray[3][4] = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {2, 5, 8, 9}
+        };
+
+        for(int i = 0; i<3; i++){
+            cout<<"\t\t";
+            for(int j = 0; j<4; j++){
+                cout<<multiDarray[i][j]<<"  ";
+            }
+            cout<<endl;
+        }
+
     }
 
 };
