@@ -53,6 +53,7 @@ Bonus Challenge:
 
 #include<iostream>
 #include<iomanip>
+#include<unordered_map>
 using namespace std;
 
 class StudentGrades{
@@ -74,6 +75,10 @@ public:
             cin>>marks;
 
             if(marks<=100){
+                if(marks<0){
+                    student_grades[i] = 0;
+                    continue;
+                }
                 student_grades[i] = marks;
 
             }
@@ -98,6 +103,43 @@ public:
         return avg;
     }
 
+    void get_grade_classification(){
+
+        unordered_map<char, int> grading;
+
+        grading.emplace(make_pair('A', 0));
+        grading.emplace(make_pair('B', 0));
+        grading.emplace(make_pair('C', 0));
+        grading.emplace(make_pair('D', 0));
+        grading.emplace(make_pair('F', 0));
+
+        for(int i = 0; i<no_of_students; i++){
+            int grade = student_grades[i];
+            if(grade>=90 && grade<=100){
+                grading['A']+=1;
+            }
+            else if(grade>=80 && grade<=89){
+                grading['B']+=1;
+            }
+            else if(grade>=70 && grade<=79){
+                grading['C']+=1;
+            }
+            else if(grade>=60 && grade<=69){
+                grading['D']+=1;
+            }
+            else if(grade>=0 && grade<=59){
+                grading['F']+=1;
+            }
+        }
+
+        cout<<"\n---------------------Result---------------------\n";
+
+        for(auto &pair : grading){
+            cout<<pair.first<<" Grades : "<<pair.second<<endl;
+        }
+
+    }
+
     
 };
 
@@ -105,6 +147,7 @@ int main(){
 
     StudentGrades s1 =  StudentGrades();
 
+    s1.get_grade_classification();
 
     return 0;
 
