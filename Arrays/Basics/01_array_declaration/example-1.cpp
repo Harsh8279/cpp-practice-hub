@@ -54,6 +54,7 @@ Bonus Challenge:
 #include<iostream>
 #include<iomanip>
 #include<unordered_map>
+#include<vector>
 using namespace std;
 
 class StudentGrades{
@@ -136,6 +137,16 @@ public:
 
         for(auto &pair : grading){
             cout<<pair.first<<" Grades : "<<pair.second<<endl;
+        }
+
+    }
+
+    void get_top_and_bottom(){
+        
+        vector<int> sorted_arr;
+
+        for(int i = 0; i<no_of_students; i++){
+            int grade = student_grades[i];
         }
 
     }
