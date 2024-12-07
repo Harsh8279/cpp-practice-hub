@@ -147,9 +147,25 @@ public:
 
         for(int i = 0; i<no_of_students; i++){
             int grade = student_grades[i];
-            sorted_arr.push_back(grade);
-            
+            if(sorted_arr.size()<1){
+                sorted_arr.push_back(grade);
+            }
+            else{
+                cout<<"Sorted _ ARR "<<sorted_arr[0]<<"  grade"<<grade<<endl;
+                for(auto inc = sorted_arr.begin(); inc<sorted_arr.end(); inc++){
+                    if(grade<*inc){
+                        sorted_arr.insert(inc, grade);
+                    }
+                }
+            }
+
+            cout<<"\n-----------------------------Sorted Array-----------------------------\n";
+            for(auto &data : sorted_arr){
+                cout<<data<<endl;
+            }
+
         }
+
 
     }
 
@@ -161,6 +177,8 @@ int main(){
     StudentGrades s1 =  StudentGrades();
 
     s1.get_grade_classification();
+
+    s1.get_top_and_bottom();
 
     return 0;
 
