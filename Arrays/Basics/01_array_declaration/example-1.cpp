@@ -145,30 +145,32 @@ public:
         
         vector<int> sorted_arr;
 
-        for(int i = 0; i<no_of_students; i++){
+        int flag;
+
+        for(int i=0; i<no_of_students;i++){
             int grade = student_grades[i];
-            if(sorted_arr.size()<1){
-                sorted_arr.push_back(grade);
-            }
-            else{
-                cout<<"Sorted _ ARR "<<sorted_arr[0]<<"  grade"<<grade<<endl;
-                for(auto inc = sorted_arr.begin(); inc<sorted_arr.end(); inc++){
-                    if(grade<*inc){
-                        sorted_arr.insert(inc, grade);
-                    }
+            auto place = sorted_arr.end();
+            for(auto incr = sorted_arr.begin();incr<sorted_arr.end();incr++){
+                if(grade<*incr){
+                    place = incr;
+                    break;
                 }
             }
-
-            cout<<"\n-----------------------------Sorted Array-----------------------------\n";
-            for(auto &data : sorted_arr){
-                cout<<data<<endl;
-            }
+            sorted_arr.insert(place, grade);
 
         }
 
+        // cout<<"\n------------Sorted Array------------"<<endl;
+
+        // for(auto incr = sorted_arr.begin();incr<sorted_arr.end();incr++){
+        //     cout<<*incr<<endl;
+        // }
+
+        cout<<"Highest Grade :: "<<sorted_arr[no_of_students-1]<<endl;
+        cout<<"Lowest Grade :: "<<sorted_arr[0]<<endl;
+        
 
     }
-
     
 };
 
@@ -177,6 +179,8 @@ int main(){
     StudentGrades s1 =  StudentGrades();
 
     s1.get_grade_classification();
+
+    cout<<"Average :: "<<s1.average_calculation()<<endl;
 
     s1.get_top_and_bottom();
 
