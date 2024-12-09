@@ -17,6 +17,5 @@ public:
 int main(){
 
     ArraySize();
-
     return 0;
 }
