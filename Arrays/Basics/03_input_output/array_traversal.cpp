@@ -45,5 +45,4 @@ int main(){
     ArrayTraversal();
 
     return 0;
-
 }
