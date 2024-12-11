@@ -1,6 +1,10 @@
 #include<iostream>
 using namespace std;
 
+// 3. array_average.cpp
+// Array Average: Calculate the average of all elements in an array
+
+
 class ArrayAverage{
 
 public:
@@ -26,3 +30,11 @@ int main(){
     ArrayAverage();
     return 0;
 }
+
+// Explanation of Array Average:
+// - Computes the mean of all elements in an array
+// - Involves two steps: 1) Calculate sum 2) Divide by number of elements
+// - Uses static_cast to convert to double for precise division
+// - Handles potential division by zero
+// - Time complexity: O(n) - similar to sum calculation
+// - Useful for statistical calculations
