@@ -1,6 +1,9 @@
 #include<iostream>
 using namespace std;
 
+// 2. array_sum.cpp
+// Array Sum: Calculate the total of all elements in an array
+
 class ArraySum{
 
 public:
@@ -23,3 +26,10 @@ int main(){
     ArraySum();
     return 0;
 }
+
+// Explanation of Array Sum:
+// - Adds up all elements in an array
+// - Uses a simple loop to iterate through array
+// - Time complexity: O(n) - visits each element once
+// - Useful for calculating totals, averages, etc.
+// - Straightforward and efficient method
