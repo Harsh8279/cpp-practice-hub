@@ -7,7 +7,6 @@ using namespace std;
 
 class ArrayAverage{
 public:
-
     ArrayAverage(){
         int data[10] = {1,2,3,4,5,6,7,8,91,10};
 
