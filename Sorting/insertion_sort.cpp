@@ -43,7 +43,7 @@ public:
             cout<<data;
         }
        }
-
+        
     }
 
 };
