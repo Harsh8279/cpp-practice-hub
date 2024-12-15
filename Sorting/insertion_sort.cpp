@@ -42,7 +42,6 @@ public:
                 }
             }
         }
-
         cout<<"---------------- Sorted Array ----------------\n";
         for(auto data: new_vector){
             cout<<data<<", ";
