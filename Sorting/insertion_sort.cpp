@@ -25,25 +25,30 @@ public:
     }
 
     void perform_sorting(){
-        vector<int> new_vector;
+        vector<int> new_vector(size);   // this statement is very useful for shifting right... size matters!!
 
-        new_vector.push_back(arr[0]);
-        
-       for(int i = 1;i<size;i++){
-        if(arr[i]>arr[i-1]){
-            new_vector.push_back(arr[i]);
+        new_vector[0] = arr[0];
+
+        for(int i = 1;i<size;i++){
+
+            for(int j = i-1;j>=0;j--){
+                if(arr[i]<new_vector[j]){
+                    new_vector[j+1] = new_vector[j];
+                    new_vector[j] = arr[i];
+                }
+                else{
+                    new_vector[j+1] = arr[i];
+                    break;
+                }
+
+            }
         }
-        else{
-            int temp = new_vector[i-1];
-            new_vector[i-1] = arr[i];
-            new_vector.push_back(temp);
-        }
-        cout<<"\n------------ Sorted Array ------------\n";
+
+        cout<<"---------------- Sorted Array ----------------\n";
         for(auto data: new_vector){
-            cout<<data;
+            cout<<data<<", ";
         }
-       }
-
+        cout<<"\n";
     }
 
 };
