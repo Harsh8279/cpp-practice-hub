@@ -40,6 +40,7 @@ public:
                     new_vector[j+1] = arr[i];
                     break;
                 }
+                
             }
         }
 
