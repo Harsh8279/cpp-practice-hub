@@ -23,6 +23,7 @@ public:
         }
 
     }
+    
     void perform_sorting(){
         vector<int> new_vector(size);   // this statement is very useful for shifting right... size matters!!
 
