@@ -92,5 +92,4 @@ int main(){
         2 < 6 ? yes --> 2 < 5 ? yes --> 2 < 4 ? yes --> 2 < 3 ? yes --> 2 < 1 ? No --> -->  right shift till 3 and place 2 at 1 Pos
     
     new_arr = 1 2 3 4 5 6
-
 */
