@@ -60,3 +60,36 @@ int main(){
 
     return 0;
 }
+
+/*
+            Selection Sort
+    In Selection Sort we works with Minimum.
+
+    e.g. 
+    4 1 6 5 3 2
+    
+    4 1 6 5 3 2
+        Round - 1 --> i = 0
+        find minimum from i = 0 to i < size and if minimum found then swap it with current ith.
+        min - 1 --> swap 4 and 1
+    1 4 6 5 3 2
+        Round - 2  --> i = 1
+        find minimum from i = 1 to i < size and if minimum found then swap it with current ith.
+        min - 2 --> swap 4 and 2
+    1 2 6 5 3 4
+        Round - 3  --> i = 2
+        find minimum from i = 2 to i < size and if minimum found then swap it with current ith.
+        min - 3 --> swap 6 and 3
+    1 2 3 5 6 4
+        Round - 4  --> i = 3
+        find minimum from i = 3 to i < size and if minimum found then swap it with current ith.
+        min - 4 --> swap 4 and 5
+    1 2 3 4 6 5
+        Round - 5  --> i = 4
+        find minimum from i = 4 to i < size and if minimum found then swap it with current ith.
+        min - 5 --> swap 5 and 6
+    1 2 3 4 5 6
+
+    Done.
+
+*/
