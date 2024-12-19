@@ -30,7 +30,7 @@ public:
         }
 
     }
-    
+
     void swapped(){
         cout<<"\nBefore Swapped : "<<endl;
         for(int i = 0;i<size;i++){
