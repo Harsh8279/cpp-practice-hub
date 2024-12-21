@@ -37,6 +37,8 @@ Explanation: In the second test case, the array is [1, 3, 1, 3, 6, 6, 7, 10, 7].
 
 */
 
+// Note : This solution works with any condition whether particular element repeats odd times or even times.
+
 #include<iostream>
 #include<unordered_map>
 using namespace std;
