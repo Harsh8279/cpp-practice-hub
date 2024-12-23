@@ -77,7 +77,29 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
 
    }
 
-   vector<vector<int>> sorted_vector;
+    vector<vector<int>> sorted_vector;
+    sorted_vector.push_back(returned_vec[0]);
+    cout<<"\nHiiiiiiiiiiiiiii\n";
+    for(auto retr = returned_vec.begin();retr<returned_vec.end();retr++){
+        for(auto itr = sorted_vector.begin();itr<sorted_vector.end();itr++){
+            if((*itr)[0]<(*retr)[0]){
+                sorted_vector.push_back(*retr);
+            }
+            else if((*itr)[0]==(*retr)[0]){
+                if((*itr)[1]<(*retr)[1])
+                {
+                    sorted_vector.push_back(*retr);
+                }
+                else{
+                        vector<int> temp = *itr;
+                        *itr = *retr;
+                        *(++itr) = temp;
+                }
+            }
+        }
+
+    }
+
    return returned_vec;
 
 }
