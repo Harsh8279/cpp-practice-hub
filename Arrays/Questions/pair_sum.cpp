@@ -78,9 +78,6 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
    }
 
    vector<vector<int>> sorted_vector;
-
-   
-
    return returned_vec;
 
 }
