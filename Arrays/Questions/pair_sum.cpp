@@ -40,6 +40,7 @@ Sample Output 2:
 #include<iostream>
 // #include <fstream>
 #include<vector>
+#include <algorithm>
 using namespace std;
 
 vector<vector<int>> pairSum(vector<int> &arr, int s){
@@ -101,54 +102,7 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
     // file<<endl<<endl;
     
 
-    for(int i = 1;i<returned_vec.size();i++){
-        for(int j = 0; j < i;j++){
-            if(sorted_vector[j][0]<returned_vec[i][0]){
-                if(sorted_vector[j+1][0]==0 and sorted_vector[j+1][1]==0){
-                        sorted_vector[j+1] = returned_vec[i];
-                }
-
-            }
-            else if(sorted_vector[j][0]>returned_vec[i][0]){
-                int cnt = sorted_vector.size()-1;
-
-                while(cnt>j){
-                    sorted_vector[cnt] = sorted_vector[cnt-1];
-                    --cnt;
-                }
-                sorted_vector[j] = returned_vec[i];
-                break;
-            }
-            else{
-
-                if(sorted_vector[j][1]>returned_vec[i][1]){
-
-                    int cnt = sorted_vector.size()-1;
-                    
-                    while(cnt>j){
-                        sorted_vector[cnt] = sorted_vector[cnt-1];
-                        --cnt;
-                    }
-                    sorted_vector[j] = returned_vec[i];
-                    break;
-
-
-                }
-                else if(sorted_vector[j][1]<returned_vec[i][1]){
-                    if(sorted_vector[j+1][0]==0 and sorted_vector[j+1][1]==0){
-                        sorted_vector[j+1] = returned_vec[i];
-                    }
-
-                }
-                else{
-                    if(sorted_vector[j+1][0]==0 and sorted_vector[j+1][1]==0){
-                        sorted_vector[j+1] = returned_vec[i];
-                    }
-                }
-
-            }
-        }
-    }
+    sort(returned_vec.begin(),returned_vec.end());
     
     // file<<"\n------------------------------Sorted Vector------------------------------\n";
     // for(auto data : sorted_vector){
@@ -164,7 +118,7 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
 
     // file.close();
 
-   return sorted_vector;
+   return returned_vec;
 
 }
 
@@ -224,13 +178,13 @@ int main(){
     s = 4;
     new_vector = pairSum(vec, s);
 
-    // cout<<"Output ::"<<endl;
-    // for(auto data: new_vector){
-    //     for(auto i : data){
-    //         cout<<i<<" ";
-    //     }
-    //     cout<<endl;
-    // }
+    cout<<"Output ::"<<endl;
+    for(auto data: new_vector){
+        for(auto i : data){
+            cout<<i<<" ";
+        }
+        cout<<endl;
+    }
 
     /*
     35 -7
