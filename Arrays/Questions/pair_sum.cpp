@@ -38,6 +38,7 @@ Sample Output 2:
 */
 
 #include<iostream>
+// #include <fstream>
 #include<vector>
 using namespace std;
 
@@ -78,29 +79,92 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
    }
 
     vector<vector<int>> sorted_vector;
-    sorted_vector.push_back(returned_vec[0]);
-    cout<<"\nHiiiiiiiiiiiiiii\n";
-    for(auto retr = returned_vec.begin();retr<returned_vec.end();retr++){
-        for(auto itr = sorted_vector.begin();itr<sorted_vector.end();itr++){
-            if((*itr)[0]<(*retr)[0]){
-                sorted_vector.push_back(*retr);
+
+   for(int i = 0;i<returned_vec.size();i++){
+
+    vector<int> zero_vector = {0,0};
+    sorted_vector.push_back(zero_vector);
+
+   }
+
+    sorted_vector[0] = returned_vec[0];
+
+    // ofstream file;
+    // file.open("output.txt");
+
+    // for(auto data: returned_vec){
+    //     for(auto idata: data){
+    //         file<<idata<<" ";
+    //     }
+    //     file<<endl;
+    // }
+    // file<<endl<<endl;
+    
+
+    for(int i = 1;i<returned_vec.size();i++){
+        for(int j = 0; j < i;j++){
+            if(sorted_vector[j][0]<returned_vec[i][0]){
+                if(sorted_vector[j+1][0]==0 and sorted_vector[j+1][1]==0){
+                        sorted_vector[j+1] = returned_vec[i];
+                }
+
             }
-            else if((*itr)[0]==(*retr)[0]){
-                if((*itr)[1]<(*retr)[1])
-                {
-                    sorted_vector.push_back(*retr);
+            else if(sorted_vector[j][0]>returned_vec[i][0]){
+                int cnt = sorted_vector.size()-1;
+
+                while(cnt>j){
+                    sorted_vector[cnt] = sorted_vector[cnt-1];
+                    --cnt;
+                }
+                sorted_vector[j] = returned_vec[i];
+                break;
+            }
+            else{
+
+                if(sorted_vector[j][1]>returned_vec[i][1]){
+
+                    int cnt = sorted_vector.size()-1;
+                    
+                    while(cnt>j){
+                        sorted_vector[cnt] = sorted_vector[cnt-1];
+                        --cnt;
+                    }
+                    sorted_vector[j] = returned_vec[i];
+                    break;
+
+
+                }
+                else if(sorted_vector[j][1]<returned_vec[i][1]){
+                    if(sorted_vector[j+1][0]==0 and sorted_vector[j+1][1]==0){
+                        sorted_vector[j+1] = returned_vec[i];
+                    }
+
                 }
                 else{
-                        vector<int> temp = *itr;
-                        *itr = *retr;
-                        *(++itr) = temp;
+                    if(sorted_vector[j+1][0]==0 and sorted_vector[j+1][1]==0){
+                        sorted_vector[j+1] = returned_vec[i];
+                    }
                 }
+
             }
         }
-
     }
+    
+    // file<<"\n------------------------------Sorted Vector------------------------------\n";
+    // for(auto data : sorted_vector){
+    //     for(auto sdata: data){
+    //         file<<sdata<<" ";
+    //     }
+    //     file<<endl;
 
-   return returned_vec;
+    // }
+    // file<<endl;
+    // file<<"\n------------------------------END------------------------------\n";
+
+
+    // file.close();
+
+   return sorted_vector;
 
 }
 
@@ -155,6 +219,18 @@ int main(){
         }
         cout<<endl;
     }
+
+    vec = {-1,3,8,6,-7,-1,-2,-9,-1,1,5,-8,8,-4,6,4,4,1,-9,9,0,7,-9,-4,-3,4,-6,-5,-4,8,0,3,5,-5,5,3,-9,-5,-5,0,7,4,-6,-7,-5,5,-6,8,6,0,9,9,0,-7,-8,-1,7,-4,-3,-3,-8,1,4,8,1,8,3,-8,-4,-3,0,6,-7,7,-7,0,8,1,6,-8,-2,0,9,-5,3,-1,-3,-3,7,4,0,-2,3,0,-4,5,-5,-8,-6,2,-5,-6,-3,-7,4,4,6,-5,5,5,-4,0,-9,-3,3,0,-9,0,-4,7,0,-1,-9,1,-9,3,6,9,6,1,-2,0,-8,8,-5,4,2,0,0,-2,0,-1,-3,3,4,3,-4,1,0,-9,-4,-9,9,-7,1,1,0,6,-9,-4,9,4,-5,0,0,4,2,7,-2,1,7,-8,0,-4,-2,0,-9,-2,-7,-8,6,-4,-4,9,0,0,-5,-4,0,8,-8,4,-5,0,-2,-8,-2,6,8,-9,9,-5,-1,3,-2,-1,-1,-1,-4,4,2,-9,-4,-1,4,-4,0,-1,7,9,4,-6,5,-3,2,-5,-5,4,2,-3,6,6,2,0,4,-3,0,-4,0,0,4,1,-5,7,-4,-7,6};
+    s = 4;
+    new_vector = pairSum(vec, s);
+
+    // cout<<"Output ::"<<endl;
+    // for(auto data: new_vector){
+    //     for(auto i : data){
+    //         cout<<i<<" ";
+    //     }
+    //     cout<<endl;
+    // }
 
     /*
     35 -7
