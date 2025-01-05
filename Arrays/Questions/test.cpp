@@ -57,45 +57,67 @@ For the third input, the only distinct triplet is (1, 1, 2), so just print 1 1 2
 #include <set>
 #include<vector>
 #include<algorithm>
+// #include <fstream>
 using namespace std;
 
 vector<vector<int>> findTriplets(vector<int>arr, int n, int K) {
 	
     set<vector<int>> nsarr;
     int diff;
+
+    // ofstream file;
+    // file.open("output.txt");
+
     for(int i = 0; i<arr.size();i++){
         diff = K - arr[i];
-        cout<<"\narr["<<i<<"] -> "<<arr[i]<<"\tdiff -> "<<diff;
         vector<int> inarr;
         inarr.push_back(arr[i]);
-        for(int j = 0;j<arr.size();j++){
+        // file<<"\n i--> arr["<<i<<"] --> "<<arr[i]<<"  diff --> "<<diff<<endl;
+        for(int j = i;j<arr.size();j++){
+
             if(i==j){
                 continue;
             }
-            
-            // cout<<"\n\tarr["<<j<<"] -> "<<arr[j]<<"\tdiff -> "<<diff;
             if(arr[j]<=diff){
-
+                // file<<"\n\t Before j--> arr["<<j<<"] --> "<<arr[j]<<"  diff --> "<<diff<<endl;
                 diff = diff - arr[j];
-                cout<<"\n\tarr["<<j<<"] -> "<<arr[j]<<"\tdiff -> "<<diff;
                 inarr.push_back(arr[j]);
+                // file<<"\n\t After j--> arr["<<j<<"] --> "<<arr[j]<<"  diff --> "<<diff<<endl;
+                for(int k = 0;k<arr.size();k++){
+                    if(j==k or i==k){
+                        continue;
+                    }
+                    if(arr[k]<=diff){
+                        // file<<"\n\t\t Before k--> arr["<<k<<"] --> "<<arr[k]<<"  diff --> "<<diff<<endl;
+                        diff = diff - arr[k];
+                        
+                        if(diff==0 and (inarr[0]+inarr[1]+arr[k])==K){
+                            inarr.push_back(arr[k]);
+                            // file<<"\n\t\t After k--> arr["<<k<<"] --> "<<arr[k]<<"  diff --> "<<diff<<endl;
+                        }
+                        
+                        if(inarr.size()==3){
+                            sort(inarr.begin(),inarr.end());
+                            nsarr.insert(inarr);
+                            inarr.pop_back();
+                        }
+                        diff = K - arr[i] -arr[j];
+
+                    }
+                }
+
             }
-
-            if(inarr.size()==3 and diff == 0 ){
-                // continue;
-                diff = K - arr[i];
-
+            if(inarr.size()==2){
+                inarr.pop_back();
             }
+            diff = K - arr[i];
 
-            
         }
-        sort(inarr.begin(),inarr.end());
-        if(inarr.size()==3){
-            nsarr.insert(inarr);
-        }
+        
     }
+    // file.close();
     vector<vector<int>> narr(nsarr.begin(),nsarr.end());
-    cout<<"Nested arr : "<<endl;
+    cout<<"\nNested arr : "<<endl;
     for(auto data: narr){
         for(auto indata: data){
             cout<<indata<<" ";
@@ -112,26 +134,26 @@ int main(){
     int K = 12;
     int n = 5;
 
-    // findTriplets(dataarr,n,K);
+    findTriplets(dataarr,n,K);
 
     dataarr = {1,2,3,1,2,3};
     K = 6;
     n = dataarr.size();
 
-    // findTriplets(dataarr,n,K);
+    findTriplets(dataarr,n,K);
 
 
     dataarr = {1,2,3,4};
     K = 11;
     n = dataarr.size();
     
-    // findTriplets(dataarr,n,K);
+    findTriplets(dataarr,n,K);
 
     dataarr = {1,1,2,2,1,1};
     K = 4;
     n = dataarr.size();
 
-    // findTriplets(dataarr,n,K);
+    findTriplets(dataarr,n,K);
 
     dataarr = {-26,32,4,17,-16,18,1,8,6,8,3,-13};
     K = 10;
@@ -162,5 +184,87 @@ int main(){
 12
 9 5 -20 -70 2 1 82 1 4 8 55 -100 
 -10
+
+-26 32 4 17 -16 18 1 8 6 8 3 -13
+
+K = 10
+i=0
+
+    diff = K - arr[i];
+         = 10 - (-26)
+         = 36
+    inarr.push_back(arr[i]); // inarr -> -26
+
+    j = 0
+        i==j --> continue
+
+    j = 1
+        arr[j] = 32
+        arr[j]<=diff
+        32<=36
+            diff = diff - arr[j]
+            diff = 36 - 32
+                 = 4
+            inarr.push_back(arr[j]); // inarr -> -26,32
+
+        inarr.size() = 2 < 3
+    j = 2
+        arr[j] = 4
+        diff = 4
+
+        arr[j]<=diff
+        4<=4
+            diff = diff - arr[j]
+                 = 4 - 4
+                 = 0
+            inarr.push_back(arr[j]); // inarr -> -26,32,4
+        inarr.size() = 3 == 3
+            diff == 0
+            0 == 0
+                nsarr.push_back(inarr);
+            inarr = {}
+            inarr.push_back(arr[i]);    // inarr -> -26
+            diff = K - arr[i]
+                 = 10 - (-26)
+                 = 10 + 26
+                 = 36
+
+    j = 3 // -26 32 4 17 -16 18 1 8 6 8 3 -13
+        arr[j] = 17
+        diff = 36
+
+        arr[j]<=diff
+        17<=36
+            diff = diff - arr[j]
+                 = 36 - 17
+                 = 19
+            inarr.push_back(arr[j]); // inarr -> -26,17
+        inarr.size() = 2 < 3
+
+    j = 4 // -26 32 4 17 -16 18 1 8 6 8 3 -13
+        arr[j] = -16
+        diff = 19
+
+        arr[j]<=diff
+        -16<=19
+            diff = diff - arr[j]
+                 = 19 - (-16)
+                 = 19 + 16
+                 = 35
+            inarr.push_back(arr[j]); // inarr -> -26,17,-16
+        inarr.size() = 3 == 3
+            diff == 0
+            35 != 0
+                //nsarr.push_back(inarr);
+            diff = K - arr[i]
+                 = 10 - (-26)
+                 = 10 + 26
+                 = 36
+
+    
+
+                
+            
+
 
 */
