@@ -49,15 +49,9 @@ void sort012(int *arr, int n)
 {
 
     for(int i = 0;i<n;i++){
-        if(arr[i]>arr[i+1]){
-            // cout<<"i --> "<<i<<"\t"<<arr[i]<<endl;
-            // cout<<"\ti+1 --> "<<i+1<<"\t"<<arr[i+1]<<endl;
-            int temp = arr[i];
-            arr[i] = arr[i+1];
-            arr[i+1] = temp;
-        }
-        for(int j = 0;j<n;j++){
-            cout<<arr[j]<<endl;
+        for(int j =  )
+        for(int cnt = 0;cnt<n;cnt++){
+            cout<<arr[cnt]<<endl;
         }
         cout<<"\n-------------------------------\n";
     }
