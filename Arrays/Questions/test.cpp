@@ -47,11 +47,31 @@ using namespace std;
 
 void sort012(int *arr, int n)
 {
-   //   Write your code here
+
+    for(int i = 0;i<n;i++){
+        if(arr[i]>arr[i+1]){
+            // cout<<"i --> "<<i<<"\t"<<arr[i]<<endl;
+            // cout<<"\ti+1 --> "<<i+1<<"\t"<<arr[i+1]<<endl;
+            int temp = arr[i];
+            arr[i] = arr[i+1];
+            arr[i+1] = temp;
+        }
+        for(int j = 0;j<n;j++){
+            cout<<arr[j]<<endl;
+        }
+        cout<<"\n-------------------------------\n";
+    }
+
+    
+    
+
+
 }
 
 int main(){
 
-    
+    int arr[] = {2,2,1,1,1,0,0,0,0};
+    sort012(arr,9);
+
     return 0;
 }
