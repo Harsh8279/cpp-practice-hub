@@ -49,7 +49,6 @@ void sort012(int *arr, int n)
 {
 
     for(int i = 0;i<n;i++){
-        for(int j =  )
         for(int cnt = 0;cnt<n;cnt++){
             cout<<arr[cnt]<<endl;
         }
