@@ -48,23 +48,92 @@ using namespace std;
 void sort012(int *arr, int n)
 {
 
-    for(int i = 0;i<n;i++){
-        for(int cnt = 0;cnt<n;cnt++){
-            cout<<arr[cnt]<<endl;
+    int left=0,right=n-1;
+
+    // cout<<" Before  ";
+    // for(int i = 0;i<n;i++){
+    //     cout<<arr[i]<<" ";
+    // }
+    // cout<<" ---------------->  ";
+    while(left<right){
+        if(arr[left]>arr[right]){
+            swap(arr[left],arr[right]);
+            left++;
+            right--;
         }
-        cout<<"\n-------------------------------\n";
+        else{
+            left++;
+        }
     }
 
-    
-    
+    while(right<n){
+        if(arr[left]>arr[right]){
+            swap(arr[left],arr[right]);
+        }
+        right++;
+    }
 
-
+    for(int i = 0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
 }
 
 int main(){
 
     int arr[] = {2,2,1,1,1,0,0,0,0};
     sort012(arr,9);
+    
+    int n = 6;
+    int arr1[n]= {0,1,2,2,1,0};
+    sort012(arr1,n);
+
+    n = 6;
+    int arr2[n]= {0,1,2,1,2,1,2};
+    sort012(arr2,n);
+
 
     return 0;
 }
+
+/*
+0 1 2 2 1 0
+i         j
+
+i=0
+j=n-1
+
+if(arr[i]>arr[j]){
+    swap(arr[i],arr[j]);
+}
+i++;
+j--;
+
+
+2
+6
+0,1,2,2,1,0
+
+i = 0
+j = 5
+
+i==j
+i = 1
+j = 5
+
+1>0 
+
+i = 2
+j = 4
+
+0 0 2 2 1 1
+0 0 1 2 2 1
+
+
+
+
+
+7
+0,1,2,1,2,1,2
+
+*/
