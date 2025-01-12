@@ -49,34 +49,44 @@ void sort012(int *arr, int n)
 {
 
     int left=0,right=n-1;
+    bool is_same = false;
 
     // cout<<" Before  ";
     // for(int i = 0;i<n;i++){
     //     cout<<arr[i]<<" ";
     // }
     // cout<<" ---------------->  ";
-    while(left<right){
-        if(arr[left]>arr[right]){
-            swap(arr[left],arr[right]);
-            left++;
-            right--;
+    while(left<n and right<n){
+
+        if(left==right){
+            is_same = true;
+        }
+
+        if(is_same){
+            if(arr[left]>arr[right]){
+                swap(arr[left],arr[right]);
+            }
+            right++;
         }
         else{
-            left++;
+            if(arr[left]>arr[right]){
+                swap(arr[left],arr[right]);
+                left++;
+                right--;
+            }
+            else{
+                left++;
+            }
         }
+        for(int i = 0;i<n;i++){
+            cout<<arr[i]<<" ";
+        }
+        cout<<endl;
     }
 
-    while(right<n){
-        if(arr[left]>arr[right]){
-            swap(arr[left],arr[right]);
-        }
-        right++;
-    }
+    cout<<"\n----------------------------------------------------------------\n";
 
-    for(int i = 0;i<n;i++){
-        cout<<arr[i]<<" ";
-    }
-    cout<<endl;
+    
 }
 
 int main(){
